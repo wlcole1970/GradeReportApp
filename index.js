@@ -1,6 +1,5 @@
 
-let geoGrades = [78];
-
+let geoGrades = [];
 
 let sum = 0;
 
@@ -20,7 +19,7 @@ let subjectsValue = document.querySelector('#subjects').value;
 let algebraDict = {};
 let germanDict = {};
 
-
+// add grades to grade arrays
 function addGrades() {
     let gradeValue = document.querySelector('#grade').valueAsNumber;
 
@@ -34,16 +33,15 @@ function addGrades() {
 }
 //Average Grade Caluculations
 
-function averageGrade()  {
+document.getElementById('eventClick').addEventListener('click', function ()  {
     let avg = document.getElementById('geo_grade');
 
-    for (let i = 0; i < geoGrades.length; i++) {
-     
-    sum += geoGrades[i]/geoGrades.length;
-    avg.textContent = Math.round(sum);
-   
-    }
-}
+    let sum = geoGrades.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue; 
+    }, 0);
+    
+    avg.textContent = Math.round(sum/geoGrades.length);
+});
 
 
 // function avgGrade() {
